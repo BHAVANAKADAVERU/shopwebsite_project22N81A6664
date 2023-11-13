@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="">
+    
+    
+    <div class="container">
+        <header>
+          
+            <img src="c:\user.jpg" width="50px" height="50px">
+            <h3>Name:
+                    <script>
+                        document.write(localStorage.getItem("name"));
+                    </script>
+                </h3>
+                <h1><B>SHOPPING ITEMS</B></h1>
+            <div class="shopping">
+                <img src="c:\cartimg.jpg" width="300px" height="50px">
+                <span class="quantity">0</span>
+            </div>
+            
+        </header>
+
+        <div class="list">
+          
+        </div>
+    </div>
+    <div class="card">
+        <h1>CART</h1>
+        <ul class="listCard">
+        </ul>
+        <div class="checkOut">
+            <div class="total">0</div>
+            <div class="closeShopping">Close</div>
+            <button onclick="checksout()"><h1>Checkout</h1></button>
+        </div>
+    </div>
+   
+       
+    </div>
+    <script>
+     
+        function checksout(){
+        alert('thanku');
+        window.location='login.html';
+      }
+      </script>
+      
+      
+
+    <script src="app.js"></script>
+    <style>
+        .container{
+            color:BLACK;
+
+        }
+    </style>
+</body>
+</html>
