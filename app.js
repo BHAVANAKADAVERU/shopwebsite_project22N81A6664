@@ -5,13 +5,16 @@ let listCard = document.querySelector('.listCard');
 let body = document.querySelector('body');
 let total = document.querySelector('.total');
 let quantity = document.querySelector('.quantity');
+let listCards = [];
 
-openShopping.addEventListener('click', ()=>{
+// Rest of your shopping cart JavaScript code goes here
+openShopping.addEventListener('click', () => {
     body.classList.add('active');
-})
-closeShopping.addEventListener('click', ()=>{
+});
+
+closeShopping.addEventListener('click', () => {
     body.classList.remove('active');
-})
+});
 
 let products = [
     {
@@ -51,58 +54,107 @@ let products = [
         price: 120000
     }
 ];
-let listCards  = [];
-function initApp(){
-    products.forEach((value, key) =>{
+
+document.addEventListener('DOMContentLoaded', initApp);
+function initApp() {
+    products.forEach((value, key) => {
         let newDiv = document.createElement('div');
         newDiv.classList.add('item');
         newDiv.innerHTML = `
-            <img src="images/${value.image}">
+            <img src="c:/${value.image}">
             <div class="title">${value.name}</div>
             <div class="price">$${value.price.toLocaleString()}</div>
-            <button onclick="addToCard(${key})">Add To Card</button>`;
+            <button onclick="addToCart(${key})">Add To Cart</button>`;
         list.appendChild(newDiv);
-    })
+    });
 }
-initApp();
-function addToCard(key){
-    if(listCards[key] == null){
-        // copy product form list to list card
-        listCards[key] = JSON.parse(JSON.stringify(products[key]));
-        listCards[key].quantity = 1;
+
+function getUserId() {
+    const userId = localStorage.getItem("name");
+    if (userId) {
+        return userId;
+    } else {
+        console.error('User ID not found in local storage');
+        return null;
     }
+}
+
+function addToCart(key) {
+    const userId = getUserId();
+    if (userId) {
+        if (!listCards[userId]) {
+            listCards[userId] = [];
+        }
+
+        const existingProductIndex = listCards[userId].findIndex((item) => item.id === products[key].id);
+
+        if (existingProductIndex !== -1) {
+            listCards[userId][existingProductIndex].quantity++;
+        } else {
+            listCards[userId].push({ ...products[key], quantity: 1 });
+        }
+
+        reloadCard();
+    }
+}
+
+function changeQuantity(userId, key, quantity) {
+    if (quantity === 0) {
+        listCards[userId].splice(key, 1);
+    } else {
+        listCards[userId][key].quantity = quantity;
+    }
+
     reloadCard();
 }
-function reloadCard(){
+
+function reloadCard() {
     listCard.innerHTML = '';
     let count = 0;
     let totalPrice = 0;
-    listCards.forEach((value, key)=>{
-        totalPrice = totalPrice + value.price;
-        count = count + value.quantity;
-        if(value != null){
-            let newDiv = document.createElement('li');
-            newDiv.innerHTML = `
-                <div><img src="images/${value.image}"/></div>
-                <div>${value.name}</div>
-                <div>${value.price.toLocaleString()}</div>
-                <div>
-                    <button onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
-                    <div class="count">${value.quantity}</div>
-                    <button onclick="changeQuantity(${key}, ${value.quantity + 1})">+</button>
-                </div>`;
+
+    const userId = getUserId();
+    if (userId) {
+        if (listCards[userId]) {
+            listCards[userId].forEach((value, key) => {
+                totalPrice += value.quantity * value.price;
+                count += value.quantity;
+
+                let newDiv = document.createElement('li');
+                newDiv.innerHTML = `
+                    <div><img src="c:/${value.image}"/></div>
+                    <div>${value.name}</div>
+                    <div>${(value.quantity * value.price).toLocaleString()}</div>
+                    <div>
+                        <button onclick="changeQuantity('${userId}', ${key}, ${value.quantity - 1})">-</button>
+                        <div class="count">${value.quantity}</div>
+                        <button onclick="changeQuantity('${userId}', ${key}, ${value.quantity + 1})">+</button>
+                    </div>`;
                 listCard.appendChild(newDiv);
+            });
         }
-    })
+    }
+
     total.innerText = totalPrice.toLocaleString();
     quantity.innerText = count;
+
+    saveCartToLocalStorage();
 }
-function changeQuantity(key, quantity){
-    if(quantity == 0){
-        delete listCards[key];
-    }else{
-        listCards[key].quantity = quantity;
-        listCards[key].price = quantity * products[key].price;
+
+document.addEventListener('DOMContentLoaded', () => {
+    const userId = getUserId();
+    if (userId) {
+        const savedCart = localStorage.getItem(`shoppingCart_${userId}`);
+        if (savedCart) {
+            listCards[userId] = JSON.parse(savedCart);
+            reloadCard();
+        }
     }
-    reloadCard();
+});
+
+function saveCartToLocalStorage() {
+    const userId = getUserId();
+    if (userId) {
+        localStorage.setItem(`shoppingCart_${userId}`, JSON.stringify(listCards[userId]));
+    }
 }
