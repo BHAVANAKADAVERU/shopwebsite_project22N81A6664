@@ -1,66 +1,9 @@
-<html>
-    <title>
-        login page
-    </title>
-   
-    <body>
-        <div class="container">
-            <div class="card">
-                <h2>LOGIN FORM</h2>
-                <form action="#" >
-
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="email" placeholder="enter email" name="email"  autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="password" placeholder="enter password" name="password"  autocomplete="off">
-                    </div>
-                   
-                    <div class="text-center">
-                        <button type="button" onclick="saveData()" class="btn btn-primary" id="save-btn">SUBMIT</button>
-                    </div>
-                    <p>Not have an account?</p>
-                    <a href="reg.html">REGISTER</a>
-
-
-                </form>
-            </div>
-        </div>
-    <script>
-         function saveData(){
-            let email,password;
-           
-            email=document.getElementById("email").value;
-            password=document.getElementById("password").value;
-
-
-            let user_record=new Array();
-            user_record=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
-
-            if(user_record.some((v)=>{
-                return v.email == email && v.password == password
-
-            })){
-                alert("login successful");
-               
-                let current_user=user_record.filter((v)=>{
-                    return v.email == email && v.password == password
-                })[0]
-
-                localStorage.setItem("name",current_user.name);
-                localStorage.setItem("email",current_user.email);
-               
-                window.location.href="index.html";
-
-            }
-            else{
-                   alert("login fail");
-            }
-        }
-
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Page</title>
     <style>
-body {
+        body {
     font-family: 'Arial', sans-serif;
     margin: 10px; 
     text-align: center;
@@ -93,8 +36,61 @@ submit {
     margin-bottom:10px;
 }
 
-</style>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>LOGIN FORM</h2>
+            <form action="#">
+                <!-- Your form fields go here -->
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="enter email" name="email"  autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="enter password" name="password"  autocomplete="off">
+                </div>
+                <div class="text-center">
+                    <button type="button" onclick="saveData()" class="btn btn-primary" id="save-btn">SUBMIT</button>
+                </div>
+                <p>Not have an account?</p>
+                <a href="reg.html">REGISTER</a>
+            </form>
+        </div>
+    </div>
+    <script>
+        function saveData() {
+            // Your login logic goes here
+            let email,password;
+           
+            email=document.getElementById("email").value;
+            password=document.getElementById("password").value;
 
-    
-    </body>
-    </html>
+
+            let user_record=new Array();
+            user_record=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+
+            if(user_record.some((v)=>{
+                return v.email == email && v.password == password
+
+            })){
+                alert("login successful");
+               
+                let current_user=user_record.filter((v)=>{
+                    return v.email == email && v.password == password
+                })[0]
+
+                localStorage.setItem("name",current_user.name);
+                localStorage.setItem("email",current_user.email);
+               
+                window.location.href="shop.html";
+
+            }
+            else{
+                   alert("login fail");
+            }
+        }
+        
+    </script>
+</body>
+</html>
