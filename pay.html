@@ -1,0 +1,72 @@
+<html>
+    <title>
+        PAYMENT PAHASE
+    </title>
+    <BODY>
+        <P>
+            <h1>SCAN THE BELOW QR CODE TO MAKE PAYMENT<br>
+            *************************************************************</h1>
+        </P>
+
+        <div class="container">
+        <IMG SRC="C:\QRCODE.png" width="300" height="300"></img>
+        </div>
+        <br>
+            <div class="checkOut">
+                <button onclick="checkout()"><h1>CHECKOUT</h1></button>
+            </div> 
+        
+            <script>
+     
+                function checkout(){
+                    alert("THANK YOU FOR YOUR PURCHASE");
+                  window.location.href="login.html";
+              }
+              </script>
+            <style>
+                 body {
+    font-family: 'Arial', sans-serif;
+    margin: 10px; 
+    text-align: center;
+    background-color:rgb(74, 235, 168);
+    box-sizing:border-box;
+    width:100%;
+    height:100%;
+    color:rgb(0, 0, 0);
+    padding:10px;
+}
+submit {
+    background-color: orange;
+    color: red;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.container{
+    width:100%;
+    height:150%;
+    background-color:rgba(226, 226, 222, 0.555);
+}
+.container,.card{
+    width:50%;
+    height:50%;
+    background-color:rgb(204, 115, 7)7, 126, 26);
+    margin:auto;
+    padding:10px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+button {
+    background-color: #af1c83;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d2d42c;
+}
+</style>
+    </BODY>
+</html>
