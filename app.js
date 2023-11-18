@@ -20,31 +20,31 @@ let products = [
     {
         id: 1,
         name: 'EARPODS',
-        image: 'earpods.PNG',
+        image: 'earpods.png',
         price: 3000
     },
     {
         id: 2,
         name: 'BAGPACK',
-        image: 'bagpack.PNG',
+        image: 'bagpack.png',
         price: 1000
     },
     {
         id: 3,
         name: 'SHIRT',
-        image: 'shirt.PNG',
+        image: 'shirt.png',
         price: 4000
     },
     {
         id: 4,
         name: 'HANDBAG',
-        image: 'handbag.JPG',
+        image: 'handbag.jpg',
         price: 5000
     },
     {
         id: 5,
         name: 'KURTI',
-        image: 'kurti.PNG',
+        image: 'kurti.png',
         price: 4000
     },
     {
