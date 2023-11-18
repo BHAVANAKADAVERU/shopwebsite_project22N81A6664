@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="">
+    <div class="container">
+        <header>
+            <!-- Your header content goes here -->
+            <img src="c:\user.jpg" width="50px" height="50px">
+            <h3>Name:
+                    <script>
+                        document.write(localStorage.getItem("name"));
+                    </script>
+                </h3>
+                <h1><B>SHOPPING ITEMS</B></h1>
+            <div class="shopping">
+                <img src="c:\cartimg.jpg" width="300px" height="50px">
+                <span class="quantity">0</span>
+            </div>
+            
+        </header>
+        <div class="list">
+            <!-- Your product list goes here -->
+        </div>
+    </div>
+    <div class="card">
+        <h1>CART</h1>
+        <ul class="listCard">
+            <!-- Your shopping cart items go here -->
+        </ul>
+       <div class="checkOut">
+            <div class="total">0</div>
+            <div class="closeShopping">Close</div>
+            <button onclick="checksout()"><h1>proceed to pay</h1></button>
+        </div> 
+    </div>
+    <script src="app.js"></script>
+    <script>
+     
+        function checksout(){
+          window.location.href="pay.html";
+      }
+      </script>
+    <style>
+        /* Your styling goes here */
+        .container{
+            color:BLACK;
+
+        }
+    </style>
+</body>
+</html>
