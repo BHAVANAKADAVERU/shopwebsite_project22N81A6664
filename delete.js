@@ -1,13 +1,3 @@
-// ... (your existing code)
-
-// Assuming products is defined in the admin.js file
-function addToCart(index) {
-    // ... (your existing code for addToCart function)
-}
-
-// ... (your existing code for changeQuantity, reloadCard, saveCartToLocalStorage functions)
-
-// Add the following code for deleting a product
 function deleteProduct(index) {
     const products = JSON.parse(localStorage.getItem("products")) || [];
 
@@ -33,7 +23,7 @@ function deleteProduct(index) {
     }
 }
 
-// Assuming products is defined in the admin.js file
+
 document.addEventListener("DOMContentLoaded", displayProducts);
 
 function displayProducts() {
@@ -60,9 +50,7 @@ function displayProducts() {
     });
 }
 
-// ... (your existing code for openShopping, closeShopping, getUserId, etc.)
 
-// ... (your existing code for changeQuantity, reloadCard, saveCartToLocalStorage functions)
 
 document.addEventListener('DOMContentLoaded', () => {
     const userId = getUserId();
@@ -75,4 +63,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// ... (your existing code)
+
