@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <h1>Add New Item</h1>
+        <form id="addItemForm">
+            <label for="itemid">Item id:</label>
+            <input type="number" id="number" name="itemName" required>
+            
+            <label for="itemName">Item Name:</label>
+            <input type="text" id="name" name="itemName" required>
+
+            <label for="itemPrice">Item image:</label>
+            <input type="text" id="image" name="itemPrice" required>
+
+
+            <label for="itemPrice">Item Price:</label>
+            <input type="text" id="price" name="itemPrice" required>
+
+            <button type="button" onclick="addItem()">Add Item</button>
+        </form>
+        <button type="button" onclick="home()">home-></button>
+    </div>
+
+    <script>
+        function home(){
+            window.location.href="adminpanel.html";
+        }
+         function addItem() {
+            // Your registration logic goes here
+
+            let id,name,email,password;
+            id=document.getElementById("number").value;         
+            name=document.getElementById("name").value;
+            image=document.getElementById("image").value;
+            price=document.getElementById("price").value;
+
+            //localStorage.setItem("name",name);
+            //localStorage.setItem("email",email);
+            //localStorage.setItem("password",password);
+        let product_record=new Array();
+            product_record=JSON.parse(localStorage.getItem("products"))?JSON.parse(localStorage.getItem("products")):[]
+
+            if(product_record.some((v)=>{
+                return v.name == name
+            }
+            )){
+
+                alert("duplicate data");
+            }
+            else
+            {
+              product_record.push({
+                "id":id,
+                "name":name,
+                "image":image,
+                "price":price
+              })
+              localStorage.setItem("products",JSON.stringify(product_record));
+              alert("product added successfully");
+              window.location.href="adminshop.html";
+              
+        }
+         }
+    </script>
+</body>
+</html>
