@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <title>Registration Page</title>
     <style>
         body {
@@ -40,14 +39,14 @@
             <form action="#">
                 <!-- Your form fields go here -->
                 <div class="form-group">
-                    <input type="text" class="form-control" id="name" placeholder="enter name" name="name"  autocomplete="off">
+                    <input type="text" class="form-control" id="name" placeholder="enter name" name="name"  autocomplete="off" required>
 
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" id="email" placeholder="enter email" name="email" autocomplete="off">
+                    <input type="email" class="form-control" id="email" placeholder="enter email" name="email" autocomplete="off" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" id="password" placeholder="enter password" name="password"  autocomplete="off">
+                    <input type="password" class="form-control" id="password" placeholder="enter password" name="password"  autocomplete="off" required>
                 </div>
                 <div class="text-center">
                     <button type="button" onclick="saveData()" class="btn btn-primary" id="save-btn">SUBMIT</button>
@@ -55,9 +54,12 @@
                 <p>Already have an account?</p>
                 <a href="login.html">LOGIN</a>
             </form>
+            
+
         </div>
     </div>
     <script>
+       
         function saveData() {
             // Your registration logic goes here
 
@@ -88,7 +90,7 @@
                 "password":password
               })
               localStorage.setItem("users",JSON.stringify(user_record));
-              alert("REGISTRATION SUCCESSFUL!!");
+              alert("registration successful");
               window.location.href="login.html";
             }
         }
