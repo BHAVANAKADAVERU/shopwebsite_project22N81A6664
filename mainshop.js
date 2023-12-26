@@ -1,5 +1,4 @@
-// shop.js
-// admin.js
+
 
 // Assuming products is defined in the admin.js file
 document.addEventListener("DOMContentLoaded", displayProducts);
