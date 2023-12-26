@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <title>Login Page</title>
     <style>
-       body {
+        body {
     font-family: 'Arial', sans-serif;
     margin: 10px; 
     text-align: center;
@@ -53,11 +52,13 @@
             </form>
         </div>
     </div>
-    <script>
-        function saveData() {
+<script>
+
+function saveData() {
             // Your login logic goes here
             let email,password;
-           
+            const admin=document.getElementById('email').value;
+            const adminpass=document.getElementById('password').value;
             email=document.getElementById("email").value;
             password=document.getElementById("password").value;
 
@@ -81,11 +82,16 @@
                 window.location.href="shop.html";
 
             }
-            else{
-                   alert("LOGIN FAIL");
-            }
-        }
-        
+            
+       else if (admin === "admin@gmail.com" && adminpass==="admin123") {
+        window.location.href="adminpanel.html";
+       } else {
+        alert('invalid credentails');
+       }
+    
+}
+
+
     </script>
 </body>
 </html>
